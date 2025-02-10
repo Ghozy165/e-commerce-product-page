@@ -1,0 +1,49 @@
+@import "../styles/variables.css";
+
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+}
+nav, ul, .cart-account {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.cart {
+    border: none;
+    position: relative;
+    display: inline-block;
+}
+
+.cart-sum {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    background-color: var(--Orange);
+    color: var(--White);
+    font-size: .5rem;
+    border-radius: 25%;
+    padding: 0 .5rem;
+}
+
+.profile-button {
+    max-width: 2.5rem;
+    border-radius: 50%;
+    /* transition: all .3s ease-in-out; */
+    border-color: transparent;
+}
+.profile-button:hover {
+    border: 2px solid var(--Orange);
+}
+
+/* .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+} */
