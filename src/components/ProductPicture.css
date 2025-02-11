@@ -3,18 +3,55 @@
 .product-carousel {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2rem;
+}
+
+.product-carousel-image {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .product-carousel-item {
     display: none;
     width: 100%;
     overflow: hidden;
+    object-fit: cover;
+}
+
+.prev-control, .next-control {
+    background-color: var(--white);
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    margin: 0 1rem;
+}
+
+.prev-control {
+    position: absolute;
+    left: 0;
+}
+.next-control {
+    position: absolute;
+    right: 0;
+}
+
+.product-carousel-thumbnail {
+    display: none;
 }
 
 .isActive {
     display: flex;
 }
+
 
 @media screen and (max-width: 425px) {
     .product-carousel-item {
@@ -22,8 +59,9 @@
     }
 }
 
-@media screen and (min-width: 426px) and (max-width: 768px) {
+@media screen and (min-width: 426px) and (max-width: 1023px) {
     .product-carousel-item {
+        max-height: 290px;
         margin: 3rem 0;
         border-radius: .9375rem;
     }
@@ -32,5 +70,73 @@
 @media screen and (min-width: 1024px) {
     .product-carousel-item {
         cursor: pointer;
+        width: 28rem;
+        border-radius: .9375rem;
+    }
+    .prev-control, .next-control {
+        display: none;
+    }
+    .product-carousel-thumbnail {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+    .product-image-thumbnail {
+        max-width: 5.5rem;
+        max-height: 5.5rem;
+    }
+    .product-image-thumbnail input[type="radio"] {
+        appearance: none;
+        border: none;
+        width: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        cursor: pointer;
+    }
+    .product-image-thumbnail > label > .thumbnail-overlay {
+        width: 5.5rem;
+        height: 5.5rem;
+        position: absolute;
+        border-radius: .625rem;
+    }
+    .product-image-thumbnail > label > img {
+        border-radius: .625rem;
+    }
+    .product-image-thumbnail > label > .thumbnail-overlay:hover {
+        background-color: var(--white);
+        opacity: .5;
+    }
+    .product-image-thumbnail input[type="radio"]:checked + label > .thumbnail-overlay {
+        background-color: var(--white);
+        outline: 2px solid var(--orange-500);
+        opacity: .75;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: opacity 0.3s ease-in-out; 
+        z-index: 4;
+    }
+    .overlay-active {
+        display: block;
+        opacity: 1;
+    }
+    .lightbox {
+        display: block;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); 
+        max-width: 50rem;
+        max-height: 50rem;
+        z-index: 5;
     }
 }
