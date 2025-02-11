@@ -1,15 +1,36 @@
 @import "../styles/variables.css";
 
-.picture-container {
+.product-carousel {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
 }
 
-.product-image {
+.product-carousel-item {
+    display: none;
     width: 100%;
-    border-radius: 2rem;
-    border: 2px solid black;
-    cursor: pointer;
     overflow: hidden;
+}
+
+.isActive {
+    display: flex;
+}
+
+@media screen and (max-width: 425px) {
+    .product-carousel-item {
+        max-height: 300px;
+    }
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
+    .product-carousel-item {
+        margin: 3rem 0;
+        border-radius: .9375rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .product-carousel-item {
+        cursor: pointer;
+    }
 }

@@ -12,11 +12,22 @@ import "./ProductPicture.css";
 
 export default function ProductPicture() {
   return (
-    <div className="picture-container">
-      <picture className="product-image">
-        <img src={productImage1} alt="" />
-      </picture>
-      <div className="product-picture-caraousel">
+    <div className="product-carousel">
+      <div className="product-carousel-image">
+        <picture className="product-carousel-item isActive">
+          <img src={productImage1} alt="" />
+        </picture>
+        <picture className="product-carousel-item">
+          <img src={productImage2} alt="" />
+        </picture>
+        <picture className="product-carousel-item">
+          <img src={productImage3} alt="" />
+        </picture>
+        <picture className="product-carousel-item">
+          <img src={productImage4} alt="" />
+        </picture>
+      </div>
+      <div className="product-carousel-control">
         <div className="product-image-thumbnail">
           <img src={productImageThumbnail1} alt="" />
         </div>
