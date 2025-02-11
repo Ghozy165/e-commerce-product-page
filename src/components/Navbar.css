@@ -5,15 +5,18 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 1.5rem;
-    border-bottom: 2px solid var(--Light-grayish-blue);
 }
 nav, ul, .cart-account {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+}
+ul > li > a {
+    font-family: 'Kumbh Sans';
+    color: var(--gray-950);
+    font-weight: 700;
+    font-size: 1.25rem;
 }
 
 .cart {
@@ -27,23 +30,32 @@ nav, ul, .cart-account {
     top: 0;
     right: 0;
     transform: translate(50%, -50%);
-    background-color: var(--Orange);
-    color: var(--White);
+    background-color: var(--orange-500);
+    color: var(--white);
     font-size: .5rem;
     border-radius: 25%;
     padding: 0 .5rem;
 }
 
 .profile-button {
-    max-width: 2.5rem;
     border-radius: 50%;
     border-color: transparent;
 }
 .profile-button:hover {
-    border: 2px solid var(--Orange);
+    border: 2px solid var(--orange-500);
 }
 
 @media screen and (max-width: 425px) {
+    header {
+        padding: 1.5rem;
+    }
+    nav {
+        gap: 1rem;
+    }
+    .cart-account {
+        gap: 1.5rem;
+    }
+
     .hamburger-menu {
         background-color: transparent;
     }
@@ -59,7 +71,7 @@ nav, ul, .cart-account {
         width: 65%; 
         z-index: 3;
         padding: 1.5rem;
-        gap: 3rem;
+        gap: 3.5rem;
     }
     .nav-links > ul {
         flex-direction: column;
@@ -90,9 +102,85 @@ nav, ul, .cart-account {
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 426px) and (max-width: 768px) {
     header {
-        padding: 1rem 0;
+        padding: 2rem 5rem;
+        border-bottom: 2px solid var(--gray-300);
+    }
+    nav {
+        gap: 1rem;
+    }
+    .cart-account {
+        gap: 3rem;
+    }
+
+    .hamburger-menu {
+        background-color: transparent;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        min-height: 100vh;
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 65%; 
+        z-index: 3;
+        padding: 3rem 5rem;
+        gap: 3.5rem;
+    }
+    .nav-links > ul {
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        gap: 1.5rem;
+    }
+    .profile-button {
+        max-width: 3rem;
+    }
+    .isActive {
+        display: flex;
+    }
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: opacity 0.3s ease-in-out; 
+        z-index: 2;
+    }
+    .overlay-active {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    header {
+        padding: 1rem 0 2rem 0;
+        border-bottom: 2px solid var(--gray-300);
+    }
+    nav {
+        gap: 3.5rem;
+    }
+    ul {
+        gap: 2rem;
+    }
+    ul > li > a {
+        color: var(--gray-500);
+        font-weight: 400;
+        font-size: .9375rem;
+    }
+    .cart-account {
+        gap: 3rem;
+    }
+    .profile-button {
+        max-width: 3rem;
     }
     .hamburger-menu {
         display: none;

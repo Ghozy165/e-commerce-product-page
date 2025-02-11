@@ -1,15 +1,13 @@
-import productImage from "./assets/images/image-product-1.jpg";
 // import './styles/App.css'
 import Navbar from "./components/Navbar";
+import ProductPicture from "./components/ProductPicture";
 
 export default function App() {
   return (
     <>
       <Navbar />
       <main className="container">
-        <picture className="product-image">
-          <img src={productImage} alt="" />
-        </picture>
+        <ProductPicture />
         <div className="product-detail">
           <h2 className="store-name">Sneaker Company</h2>
           <h1 className="product-name">Fall Limited Edition Sneakers</h1>

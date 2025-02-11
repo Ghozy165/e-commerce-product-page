@@ -1,13 +1,25 @@
 :root {
-  --Orange: hsl(26, 100%, 55%);
-  --Pale-orange: hsl(25, 100%, 94%);
+  --orange-500: hsl(26, 100%, 55%);
+  --orange-300: hsl(25, 100%, 71%);
 
-  --Very-dark-blue: hsl(220, 13%, 13%);
-  --Dark-grayish-blue: hsl(219, 9%, 45%);
-  --Grayish-blue: hsl(220, 14%, 75%);
-  --Light-grayish-blue: hsl(223, 64%, 98%);
-  --White: hsl(0, 0%, 100%);
-  --Black: hsl(0, 0%, 0%);
+  --gray-950: hsl(220, 13%, 13%);
+  --gray-500: hsl(219, 9%, 45%);
+  --gray-300: hsl(221, 22%, 81%);
+  --gray-100: hsl(219, 35%, 92%);
+  --gray-50: hsl(223, 64%, 98%);
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 0%);
+
+  font-family: 'Kumbh Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Kumbh Sans';
+  src: url('../assets/fonts/Kumbh_Sans/KumbhSans-VariableFont_YOPQ,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
 }
 
 *, *::before, *::after {
@@ -36,6 +48,10 @@ img, picture {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+img {
+  object-fit: cover;
 }
 
 button, input, textarea, select {

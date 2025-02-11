@@ -1,0 +1,15 @@
+@import "../styles/variables.css";
+
+.picture-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.product-image {
+    width: 100%;
+    border-radius: 2rem;
+    border: 2px solid black;
+    cursor: pointer;
+    overflow: hidden;
+}
