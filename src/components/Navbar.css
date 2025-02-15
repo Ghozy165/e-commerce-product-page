@@ -45,7 +45,7 @@ ul > li > a {
     border: 2px solid var(--orange-500);
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 426px) {
     header {
         padding: 1.5rem;
     }
