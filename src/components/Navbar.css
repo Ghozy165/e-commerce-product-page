@@ -104,7 +104,7 @@ ul > li > a {
 
 @media screen and (min-width: 426px) and (max-width: 1023px) {
     header {
-        padding: 2rem 5rem;
+        padding: 2rem 0;
         border-bottom: 2px solid var(--gray-300);
     }
     nav {
