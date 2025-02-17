@@ -3,6 +3,8 @@
 .product-detail {
     display: flex;
     flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
 }
 .product {
     display: flex;
@@ -95,7 +97,7 @@
     transition: background-color .3s;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 426px) {
     .product-detail {
         gap: 2rem;
         padding: 1.5rem;
@@ -117,7 +119,6 @@
 @media screen and (min-width: 426px) and (max-width: 1023px) {
     .product-detail {
         gap: 1.5rem;
-        padding: 1.5rem;
     }
     .product {
         gap: 1.5rem;
@@ -140,7 +141,6 @@
 @media screen and (min-width: 1024px) {
     .product-detail {
         gap: 2rem;
-        padding: 1.5rem;
     }
     .product {
         gap: 2rem;
