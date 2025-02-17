@@ -27,7 +27,7 @@ export default function ProductDetail() {
       </div>
       <div className="add-cart">
         <div className="cart-quantity">
-          <button>
+          <button className="minus">
             <img src={IconMinus} alt="minus" />
           </button>
           <input

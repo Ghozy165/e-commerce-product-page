@@ -74,6 +74,9 @@
     border: none;
     background-color: var(--gray-50);
 }
+.plus, .minus {
+    border: none;
+}
 .btn-add-to-cart {
     width: 100%;
     background-color: var(--orange-500);
