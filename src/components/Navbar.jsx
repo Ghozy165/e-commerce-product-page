@@ -5,11 +5,22 @@ import iconMenu from "../assets/images/icon-menu.svg";
 import iconClose from "../assets/images/icon-close.svg";
 import "./Navbar.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [isActive, setIsActive] = useState(false);
   const handleToggle = () => setIsActive(!isActive);
+
+  useEffect(() => {
+    const navLink = document.querySelectorAll(".link");
+    navLink.forEach(link => {
+      if (isActive) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }, [isActive]);
 
   return (
     <header>
@@ -25,10 +36,10 @@ export default function Navbar() {
         </button>
         <img src={logo} alt="web logo" />
         <div className={`overlay ${isActive ? "overlay-active" : ""}`}
-            onClick={(e) => {
-                e.stopPropagation();
-                handleToggle();
-            }}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleToggle();
+          }}
         ></div>
         <div className={`nav-links ${isActive ? "isActive" : ""}`}>
           <button className="hamburger-menu">
@@ -42,19 +53,54 @@ export default function Navbar() {
           </button>
           <ul>
             <li>
-              <a href="#">Collections</a>
+              <a
+                className="link"
+                href="#"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleToggle();
+                }}
+              >Collections</a>
             </li>
             <li>
-              <a href="#">Men</a>
+              <a
+                className="link"
+                href="#"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleToggle();
+                }}
+              >Men</a>
             </li>
             <li>
-              <a href="#">Women</a>
+              <a
+                className="link"
+                href="#"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleToggle();
+                }}
+              >Women</a>
             </li>
             <li>
-              <a href="#">About</a>
+              <a
+                className="link"
+                href="#"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleToggle();
+                }}
+              >About</a>
             </li>
             <li>
-              <a href="#">Contact</a>
+              <a
+                className="link"
+                href="#"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleToggle();
+                }}
+              >Contact</a>
             </li>
           </ul>
         </div>

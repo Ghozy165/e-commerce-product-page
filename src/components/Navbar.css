@@ -2,6 +2,7 @@
 
 header {
     width: 100%;
+    height: fit-content;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -16,7 +17,8 @@ ul > li > a {
     font-family: 'Kumbh Sans';
     color: var(--gray-950);
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
+    line-height: 1.4;
 }
 
 .cart {
@@ -58,6 +60,7 @@ ul > li > a {
 
     .hamburger-menu {
         background-color: transparent;
+        border: none;
     }
     .nav-links {
         display: none;
@@ -84,6 +87,7 @@ ul > li > a {
     }
     .isActive {
         display: flex;
+        background-color: var(--white);
     }
     .overlay {
         display: none;
@@ -116,6 +120,7 @@ ul > li > a {
 
     .hamburger-menu {
         background-color: transparent;
+        border: none;
     }
     .nav-links {
         display: none;
@@ -142,6 +147,7 @@ ul > li > a {
     }
     .isActive {
         display: flex;
+        background-color: var(--white);
     }
     .overlay {
         display: none;
@@ -162,7 +168,7 @@ ul > li > a {
 
 @media screen and (min-width: 1024px) {
     header {
-        padding: 1.75rem 0 2rem 0;
+        /* padding: 1.75rem 0 0 0; */
         border-bottom: 2px solid var(--gray-300);
     }
     nav {
@@ -175,6 +181,18 @@ ul > li > a {
         color: var(--gray-500);
         font-weight: 400;
         font-size: .9375rem;
+        line-height: 1.7;
+    }
+    ul > li > a:hover {
+        color: var(--gray-950);
+    }
+    ul > li > a.active {
+        color: var(--gray-950);
+    }
+    ul > li {
+        padding-top: 1.75rem;
+        padding-bottom: 2rem;
+        border-bottom: 4px solid var(--orange-500);
     }
     .cart-account {
         gap: 3rem;
@@ -183,6 +201,15 @@ ul > li > a {
         max-width: 3rem;
     }
     .hamburger-menu {
+        display: none;
+    }
+    .overlay {
+        display: none;
+    }
+    .overlay-active {
+        display: none;
+    }
+    .isActive {
         display: none;
     }
 }
