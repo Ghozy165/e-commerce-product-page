@@ -21,7 +21,7 @@ ul > li > a {
     line-height: 1.4;
 }
 
-.cart {
+/* .cart {
     border: none;
     position: relative;
     display: inline-block;
@@ -37,7 +37,7 @@ ul > li > a {
     font-size: .5rem;
     border-radius: 25%;
     padding: 0 .5rem;
-}
+} */
 
 .profile-button {
     border-radius: 50%;

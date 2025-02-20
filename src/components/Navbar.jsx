@@ -1,5 +1,4 @@
 import logo from "../assets/images/logo.svg";
-import cartIcon from "../assets/images/icon-cart.svg";
 import avatar from "../assets/images/image-avatar.png";
 import iconMenu from "../assets/images/icon-menu.svg";
 import iconClose from "../assets/images/icon-close.svg";
@@ -7,6 +6,7 @@ import "./Navbar.css";
 
 import React from 'react';
 import { useState } from "react";
+import Cart from "./Cart";
 
 export default function Navbar({
   activePage 
@@ -83,10 +83,7 @@ export default function Navbar({
         </div>
       </nav>
       <div className="cart-account">
-        <button className="cart">
-          <img src={cartIcon} alt="" />
-          <span className="cart-sum">3</span>
-        </button>
+        <Cart />
         <button className="profile-button">
           <img src={avatar} alt="" />
         </button>
