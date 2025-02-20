@@ -6,24 +6,31 @@ import IconCart from "../assets/images/icon-cart.svg";
 
 import { useState } from "react";
 
+const product = {
+  store_id: 1,
+  product_id: 1,
+  store_name: "Sneaker Company",
+  product_name: "Fall Limited Edition Sneakers",
+  product_description: "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+  price: 250.00,
+  discountedPrice: 125.00,
+  discount: 50,
+};
+
 export default function ProductDetail() {
   const [quantity, setQuantity] = useState(0);
   return (
     <div className="product-detail">
       <div className="product">
-        <h2 className="store-name">Sneaker Company</h2>
-        <h1 className="product-name">Fall Limited Edition Sneakers</h1>
-        <p className="product-description">
-          These low-profile sneakers are your perfect casual wear companion.
-          Featuring a durable rubber outer sole, they’ll withstand everything the
-          weather can offer.
-        </p>
+        <h2 className="store-name">{product.store_name}</h2>
+        <h1 className="product-name">{product.product_name}</h1>
+        <p className="product-description">{product.product_description}</p>
       </div>
       <div className="price">
         <h3 className="discounted-price">
-          $125.00<span className="discount">50%</span>
+          ${product.discountedPrice}<span className="discount">{product.discount}%</span>
         </h3>
-        <h4 className="real-price">$250.00</h4>
+        <h4 className="real-price">${product.price}</h4>
       </div>
       <div className="add-cart">
         <div className="cart-quantity">
