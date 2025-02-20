@@ -177,6 +177,10 @@ ul > li > a {
     ul {
         gap: 2rem;
     }
+    ul > li {
+        padding-top: 1.75rem;
+        padding-bottom: 2rem;
+    }
     ul > li > a {
         color: var(--gray-500);
         font-weight: 400;
@@ -186,11 +190,8 @@ ul > li > a {
     ul > li > a:hover {
         color: var(--gray-950);
     }
-    ul > li > a.active {
+    ul > li > a[aria-current="page"] {
         color: var(--gray-950);
-    }
-    ul > li {
-        padding-top: 1.75rem;
         padding-bottom: 2rem;
         border-bottom: 4px solid var(--orange-500);
     }
@@ -201,15 +202,6 @@ ul > li > a {
         max-width: 3rem;
     }
     .hamburger-menu {
-        display: none;
-    }
-    .overlay {
-        display: none;
-    }
-    .overlay-active {
-        display: none;
-    }
-    .isActive {
         display: none;
     }
 }

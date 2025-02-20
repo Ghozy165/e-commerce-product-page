@@ -5,22 +5,14 @@ import iconMenu from "../assets/images/icon-menu.svg";
 import iconClose from "../assets/images/icon-close.svg";
 import "./Navbar.css";
 
-import { useState, useEffect } from "react";
+import React from 'react';
+import { useState } from "react";
 
-export default function Navbar() {
+export default function Navbar({
+  activePage 
+}) {
   const [isActive, setIsActive] = useState(false);
   const handleToggle = () => setIsActive(!isActive);
-
-  useEffect(() => {
-    const navLink = document.querySelectorAll(".link");
-    navLink.forEach(link => {
-      if (isActive) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
-    });
-  }, [isActive]);
 
   return (
     <header>
@@ -55,51 +47,36 @@ export default function Navbar() {
             <li>
               <a
                 className="link"
-                href="#"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleToggle();
-                }}
+                href="#collections"
+                aria-current={activePage === 'collections' ? 'page' : ''}
               >Collections</a>
             </li>
             <li>
               <a
                 className="link"
-                href="#"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleToggle();
-                }}
+                href="#men"
+                aria-current={activePage === 'men' ? 'page' : ''}
               >Men</a>
             </li>
             <li>
               <a
                 className="link"
-                href="#"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleToggle();
-                }}
+                href="#women"
+                aria-current={activePage === 'women' ? 'page' : ''}
               >Women</a>
             </li>
             <li>
               <a
                 className="link"
-                href="#"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleToggle();
-                }}
+                href="#about"
+                aria-current={activePage === 'about' ? 'page' : ''}
               >About</a>
             </li>
             <li>
               <a
                 className="link"
-                href="#"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleToggle();
-                }}
+                href="#contact"
+                aria-current={activePage === 'contact' ? 'page' : ''}
               >Contact</a>
             </li>
           </ul>
