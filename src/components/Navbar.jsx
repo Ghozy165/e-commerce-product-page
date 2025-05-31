@@ -9,7 +9,7 @@ import { useState } from "react";
 import Cart from "./Cart";
 
 export default function Navbar({
-  activePage 
+  activePage
 }) {
   const [isActive, setIsActive] = useState(false);
   const handleToggle = () => setIsActive(!isActive);
@@ -84,9 +84,7 @@ export default function Navbar({
       </nav>
       <div className="cart-account">
         <Cart />
-        <button className="profile-button">
-          <img src={avatar} alt="" />
-        </button>
+        <img className="profile-button" src={avatar} alt="profile image" />
       </div>
     </header>
   );

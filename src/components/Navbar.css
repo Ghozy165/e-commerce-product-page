@@ -21,30 +21,25 @@ ul > li > a {
     line-height: 1.4;
 }
 
-/* .cart {
-    border: none;
-    position: relative;
-    display: inline-block;
-}
-
-.cart-sum {
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(50%, -50%);
-    background-color: var(--orange-500);
-    color: var(--white);
-    font-size: .5rem;
-    border-radius: 25%;
-    padding: 0 .5rem;
-} */
-
 .profile-button {
     border-radius: 50%;
     border-color: transparent;
+    cursor: pointer;
 }
 .profile-button:hover {
     border: 2px solid var(--orange-500);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 @media screen and (max-width: 426px) {

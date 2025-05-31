@@ -85,8 +85,8 @@ export default function ProductDetail() {
   return (
     <div className="product-detail">
       <div className="product">
-        <h2 className="store-name">{store.name}</h2>
-        <h1 className="product-name">{product.name}</h1>
+        <h1 className="store-name">{store.name}</h1>
+        <h2 className="product-name">{product.name}</h2>
         <p className="product-description">{product.description}</p>
       </div>
       
@@ -111,6 +111,7 @@ export default function ProductDetail() {
           <button className="minus" onClick={handleDecrement}>
             <img src={IconMinus} alt="decrease quantity" />
           </button>
+          <label className="sr-only">Quantity</label>
           <input
             type="number"
             min="1"
