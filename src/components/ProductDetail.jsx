@@ -111,10 +111,12 @@ export default function ProductDetail() {
           <button className="minus" onClick={handleDecrement}>
             <img src={IconMinus} alt="decrease quantity" />
           </button>
-          <label className="sr-only">Quantity</label>
+          <label for="quantity" className="sr-only">Quantity</label>
           <input
             type="number"
             min="1"
+            id="quantity"
+            name="quantity"
             className="quantity"
             value={quantity}
             onChange={handleQuantityChange}
