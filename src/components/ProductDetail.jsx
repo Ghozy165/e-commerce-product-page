@@ -3,21 +3,36 @@ import IconPlus from "../assets/images/icon-plus.svg";
 import IconMinus from "../assets/images/icon-minus.svg";
 import IconCart from "../assets/images/icon-cart.svg";
 import "./ProductDetail.css"
-
-const product = {
-  store_id: 1,
-  product_id: 1,
-  store_name: "Sneaker Company",
-  product_name: "Fall Limited Edition Sneakers",
-  product_description: "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.",
-  price: 250.00,
-  discountedPrice: 125.00,
-  discount: 50,
-};
+import { Data } from "../hooks/data";
 
 export default function ProductDetail() {
+  const { 
+    data,           
+    loading,        
+    error,         
+    isLoaded,       
+    getStoreById,
+    getProductsByStore,
+  } = Data();
 
   const [quantity, setQuantity] = useState(1);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
+  const storeId = 1;
+
+  const store = getStoreById(storeId);
+  const products = getProductsByStore(storeId);
+  const product = products[0]; 
+
+  if (!store) {
+    return <div>Store not found</div>;
+  }
+
+  if (!products || products.length === 0) {
+    return <div>No products found for this store</div>;
+  }
 
   const handleIncrement = () => {
     setQuantity(prev => prev + 1);
@@ -34,52 +49,63 @@ export default function ProductDetail() {
 
   const handleAddToCart = () => {
     if (quantity > 0) {
-      // Get existing cart items
       const existingCart = JSON.parse(localStorage.getItem('cartItems') || '[]');
 
-      // Create cart item with consistent structure
+      const discountedPrice = product.discount_percent > 0 
+        ? product.price * (1 - product.discount_percent / 100)
+        : product.price;
+
       const cartItem = {
-        id: product.product_id,
-        name: product.product_name,
-        price: product.discountedPrice,
+        id: product.id, 
+        name: product.name,
+        price: discountedPrice, 
         quantity: quantity,
-        store_name: product.store_name
+        store_name: store.name 
       };
 
-      // Check if item already exists in cart
       const existingItemIndex = existingCart.findIndex(item => item.id === cartItem.id);
 
       if (existingItemIndex > -1) {
-        // Update quantity if item exists
         existingCart[existingItemIndex].quantity += quantity;
       } else {
-        // Add new item
         existingCart.push(cartItem);
       }
 
-      // Save to localStorage
       localStorage.setItem('cartItems', JSON.stringify(existingCart));
       alert(`Added ${quantity} item(s) to cart`);
 
-      // Dispatch custom event to notify cart component
       window.dispatchEvent(new Event('cartUpdated'));
     }
   };
 
+  const discountedPrice = product.discount_percent > 0 
+    ? product.price * (1 - product.discount_percent / 100)
+    : product.price;
+
   return (
     <div className="product-detail">
       <div className="product">
-        <h2 className="store-name">{product.store_name}</h2>
-        <h1 className="product-name">{product.product_name}</h1>
-        <p className="product-description">{product.product_description}</p>
+        <h2 className="store-name">{store.name}</h2>
+        <h1 className="product-name">{product.name}</h1>
+        <p className="product-description">{product.description}</p>
       </div>
+      
       <div className="price">
-        <h3 className="discounted-price">
-          ${product.discountedPrice.toFixed(2)}
-          <span className="discount">{product.discount}%</span>
-        </h3>
-        <h4 className="real-price">${product.price.toFixed(2)}</h4>
+        {product.discount_percent > 0 ? (
+          <>
+            <h3 className="discounted-price">
+              ${discountedPrice.toFixed(2)}
+              <span className="discount">{product.discount_percent}%</span>
+            </h3>
+            <h4 className="real-price">${product.price.toFixed(2)}</h4>
+          </>
+        ) : (
+          <h3 className="discounted-price">
+            ${product.price.toFixed(2)}
+          </h3>
+        )}
       </div>
+      
       <div className="add-cart">
         <div className="cart-quantity">
           <button className="minus" onClick={handleDecrement}>

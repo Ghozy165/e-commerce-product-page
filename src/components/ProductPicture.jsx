@@ -1,37 +1,32 @@
 import { useState } from "react";
 import "./ProductPicture.css";
-
-import nextIcon from "../assets/images/icon-next.svg";
-import prevIcon from "../assets/images/icon-previous.svg";
-
-const images = import.meta.glob("../assets/images/*.jpg", {
-  eager: true,
-  import: "default",
-});
-
-// Menyusun array gambar dengan akses yang lebih aman
-const productImages = [
-  {
-    full: images["../assets/images/image-product-1.jpg"] || "",
-    thumb: images["../assets/images/image-product-1-thumbnail.jpg"] || "",
-  },
-  {
-    full: images["../assets/images/image-product-2.jpg"] || "",
-    thumb: images["../assets/images/image-product-2-thumbnail.jpg"] || "",
-  },
-  {
-    full: images["../assets/images/image-product-3.jpg"] || "",
-    thumb: images["../assets/images/image-product-3-thumbnail.jpg"] || "",
-  },
-  {
-    full: images["../assets/images/image-product-4.jpg"] || "",
-    thumb: images["../assets/images/image-product-4-thumbnail.jpg"] || "",
-  },
-];
+import { Data } from "../hooks/data";
 
 export default function ProductPicture() {
+  const { 
+    data,           
+    loading,        
+    error,         
+    isLoaded,       
+    getImagesByProduct,
+  } = Data();
+
   const [isActive, setIsActive] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Handle loading dan error state
+  if (loading) return <div>Loading images...</div>;
+  if (error) return <div>Error loading images: {error}</div>;
+
+  const productId = 1;
+
+  // PERBAIKAN 1: Gunakan nama variabel yang konsisten
+  const productImages = getImagesByProduct(productId);
+
+  // PERBAIKAN 2: Validasi data
+  if (!productImages || productImages.length === 0) {
+    return <div>No images found for this product</div>;
+  }
 
   const handleToggle = () => {
     if (window.innerWidth > 768) {
@@ -39,6 +34,7 @@ export default function ProductPicture() {
     }
   };
 
+  // PERBAIKAN 3: Gunakan productImages (bukan productImages yang undefined)
   const handleNext = () =>
     setCurrentIndex((prev) => (prev + 1) % productImages.length);
 
@@ -61,8 +57,8 @@ export default function ProductPicture() {
         <div className="product-carousel-image" onClick={handleToggle}>
           <picture className="product-carousel-item">
             <img
-              src={productImages[currentIndex].full}
-              alt={`Product ${currentIndex + 1}`}
+              src={productImages[currentIndex]?.full}
+              alt={productImages[currentIndex]?.alt_text || `Product ${currentIndex + 1}`}
             />
           </picture>
 
@@ -93,7 +89,7 @@ export default function ProductPicture() {
 
         {/* Thumbnail */}
         <div className="product-carousel-thumbnail">
-          {productImages.map(({ thumb }, index) => (
+          {productImages.map((image, index) => (
             <div key={index} className="product-image-thumbnail">
               <input
                 type="radio"
@@ -109,7 +105,10 @@ export default function ProductPicture() {
                     currentIndex === index ? "active" : ""
                   }`}
                 ></div>
-                <img src={thumb} alt={`Thumbnail ${index + 1}`} />
+                <img 
+                  src={image?.thumb} 
+                  alt={image?.alt_text || `Thumbnail ${index + 1}`} 
+                />
               </label>
             </div>
           ))}
@@ -122,8 +121,8 @@ export default function ProductPicture() {
           <div className="product-carousel-image">
             <picture className="product-carousel-item">
               <img
-                src={productImages[currentIndex].full}
-                alt={`Product ${currentIndex + 1}`}
+                src={productImages[currentIndex]?.full}
+                alt={productImages[currentIndex]?.alt_text || `Product ${currentIndex + 1}`}
               />
             </picture>
 
@@ -154,7 +153,7 @@ export default function ProductPicture() {
 
           {/* Thumbnail di Modal */}
           <div className="product-carousel-thumbnail">
-            {productImages.map(({ thumb }, index) => (
+            {productImages.map((image, index) => (
               <div key={index} className="product-image-thumbnail">
                 <input
                   type="radio"
@@ -170,7 +169,10 @@ export default function ProductPicture() {
                       currentIndex === index ? "active" : ""
                     }`}
                   ></div>
-                  <img src={thumb} alt={`Thumbnail ${index + 1}`} />
+                  <img 
+                    src={image?.thumb} 
+                    alt={image?.alt_text || `Thumbnail ${index + 1}`} 
+                  />
                 </label>
               </div>
             ))}
