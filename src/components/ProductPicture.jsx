@@ -14,16 +14,13 @@ export default function ProductPicture() {
   const [isActive, setIsActive] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Handle loading dan error state
   if (loading) return <div>Loading images...</div>;
   if (error) return <div>Error loading images: {error}</div>;
 
   const productId = 1;
 
-  // PERBAIKAN 1: Gunakan nama variabel yang konsisten
   const productImages = getImagesByProduct(productId);
 
-  // PERBAIKAN 2: Validasi data
   if (!productImages || productImages.length === 0) {
     return <div>No images found for this product</div>;
   }
@@ -34,7 +31,6 @@ export default function ProductPicture() {
     }
   };
 
-  // PERBAIKAN 3: Gunakan productImages (bukan productImages yang undefined)
   const handleNext = () =>
     setCurrentIndex((prev) => (prev + 1) % productImages.length);
 
