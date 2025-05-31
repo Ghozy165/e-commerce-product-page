@@ -1,0 +1,33 @@
+{
+  "productImages": [
+    {
+      "id": 1,
+      "product_id": 1,
+      "full": "../assets/images/image-product-1.jpg",
+      "thumb": "../assets/images/image-product-1-thumbnail.jpg",
+      "alt_text": "Fall Limited Edition Sneakers - Front View"
+    },
+    {
+      "id": 2,
+      "product_id": 1,
+      "full": "../assets/images/image-product-2.jpg",
+      "thumb": "../assets/images/image-product-2-thumbnail.jpg",
+      "alt_text": "Fall Limited Edition Sneakers - Back View"
+    },
+    {
+      "id": 3,
+      "product_id": 1,
+      "full": "../assets/images/image-product-3.jpg",
+      "thumb": "../assets/images/image-product-3-thumbnail.jpg",
+      "alt_text": "Fall Limited Edition Sneakers - Right View"
+    },
+    {
+      "id": 4,
+      "product_id": 1,
+      "full": "../assets/images/image-product-4.jpg",
+      "thumb": "../assets/images/image-product-4-thumbnail.jpg",
+      "alt_text": "Fall Limited Edition Sneakers - Left View"
+    }
+  ]
+}
+
